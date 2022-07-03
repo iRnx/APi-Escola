@@ -19,6 +19,11 @@ class AlunoSerializer(serializers.ModelSerializer):
 
 
 class CursoSerializer(serializers.ModelSerializer):
+    
+    nivel = serializers.SerializerMethodField()
+
+    def get_nivel(self, obj):
+        return obj.get_nivel_display()
 
     class Meta:
         model = Curso
